@@ -60,6 +60,37 @@ class MetodosOrdenamiento{
 			
 		}
 		
+		public static void ordenacionBurbuja3(int nums[],int np) {
+			int numeros[]=nums.clone();
+			long comparaciones=0,intercambios=0,recorridos=0;
+			
+			int i =1;
+			long ini = System.nanoTime();
+			recorridos+=1;
+			do{
+				boolean ordenado=true;
+				recorridos+=1;
+				for (int j = 0; j < numeros.length-i; j++) {
+					comparaciones+=1;
+					if(numeros[j]>numeros[j+1]) {
+						intercambios+=1;
+						ordenado=false;
+						int aux = numeros[j];
+						numeros[j]=numeros[j+1];
+						numeros[j+1]=aux;
+					}
+				}
+				i+=1;
+			}while (i<numeros.length);
+			long fin = System.nanoTime();
+			resultados[np][2][0]=comparaciones;
+			resultados[np][2][1]=intercambios;
+			resultados[np][2][2]=recorridos;
+			resultados[np][2][3]=fin-ini;
+			
+
+		}
+		
 	}//burbuja
 	
 	
