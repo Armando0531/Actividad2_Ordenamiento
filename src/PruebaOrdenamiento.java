@@ -93,6 +93,58 @@ class MetodosOrdenamiento{
 		
 	}//burbuja
 	
+	static class Quicksort{
+		static long comparaciones=0;
+		static long intercambios=0;
+		static long recorridos=0;
+		
+        static public int[] quicksort(int[] numeros,int izq,int der) {
+            int pivote = numeros[izq];
+            int i = izq, j = der;
+            int aux;
+            recorridos+=1;
+            while(i<j) {
+            	comparaciones+=1;
+            	recorridos+=1;
+                while(numeros[i]<=pivote && i<j) i++;
+                comparaciones+=1;
+                recorridos+=1;
+                while(numeros[j]>pivote)j--;
+                if(i<j) {
+                	intercambios+=1;
+                    aux = numeros[i];
+                    numeros[i]=numeros[j];
+                    numeros[j] = aux;
+                }
+            }
+            intercambios+=1;
+            numeros[izq]=numeros[j];
+            numeros[j]=pivote;
+            if(izq<j-1)
+                quicksort(numeros,izq,j-1);
+            if(j+1<der)
+                quicksort(numeros, j+1, der);
+            return numeros;
+        }
+        
+        public static void llamadaQuicksort(int nums[],int np) {
+        	int numeros[]=nums.clone();
+        	
+        	long ini = System.nanoTime();
+        	quicksort(numeros,0,numeros.length-1);
+			long fin = System.nanoTime();
+			
+			resultados[np][3][0]=comparaciones;
+			resultados[np][3][1]=intercambios;
+			resultados[np][3][2]=recorridos;
+			resultados[np][3][3]=fin-ini;
+			
+			comparaciones=intercambios=recorridos=0;
+        	
+        }
+    
+        
+    }
 	
 	
 }
