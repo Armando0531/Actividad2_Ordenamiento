@@ -1,3 +1,15 @@
+
+class GeneracionNumeros{
+	public static int[] generarNumerosAleatorios(int cnt){
+		int[] ret = new int[cnt];
+		for (int i = 0; i < ret.length; i++) {
+			ret[i]=(int)(Math.random()*cnt);
+		}
+	    return ret;
+	}
+}
+
+
 class MetodosOrdenamiento{
 	
 		static long resultados[][][]=new long[4][8][4];
