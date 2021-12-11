@@ -146,6 +146,48 @@ class MetodosOrdenamiento{
         
     }
 	
+	static class Shellsort{
+		
+		public static void shellsort(int[] nums,int np) {
+			int numeros[]=nums.clone();
+			int intervalo;
+			long comparaciones=0,intercambios=0,recorridos=0;
+			intervalo = numeros.length/2;
+			long ini = System.nanoTime();
+			recorridos+=1;
+			while(intervalo>0) {
+				recorridos+=1;
+				for(int i = intervalo; i<numeros.length; i++) {
+					int j=i-intervalo;
+					recorridos+=1;
+					while(j>=0) {
+						int k=j+intervalo;
+						comparaciones+=1;
+						if(numeros[j] <= numeros[k]) {
+							j-=1;
+						}else {
+							int aux = numeros[j];
+							intercambios+=1;
+							numeros[j] = numeros[k];
+							numeros[k] = aux;
+							j-=intervalo;
+						}
+					}
+				}
+				intervalo=intervalo/2;
+			}
+			long fin = System.nanoTime();
+			resultados[np][4][0]=comparaciones;
+			resultados[np][4][1]=intercambios;
+			resultados[np][4][2]=recorridos;
+			resultados[np][4][3]=fin-ini;
+			
+		}
+		
+	}
+	
+	
+	
 	
 }
 public class PruebaOrdenamiento {
